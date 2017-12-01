@@ -18,10 +18,6 @@ while True:
     print 'Received -> %s' % (rcvmsg)
     if rcvmsg == '':
         break
-    print 'Type message...'
-    s_msg = raw_input()
-    if s_msg == '':
-        break
     print 'Wait...'
 
     clientsock.sendall(s_msg) #メッセージを返します

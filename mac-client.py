@@ -46,11 +46,7 @@ try:
 
                             client.connect((host, port))
 
-                            client.send("from mac")
-
-                            response = client.recv(4096)
-
-                            print response
+                            client.send("起きて")
 
             buff.close()
             buff = StringIO(u(''))
