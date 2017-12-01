@@ -39,24 +39,18 @@ try:
                             print(word)
                             sock.close()
                         
-                            host = "192.168.2.13" #お使いのサーバーのホスト名を入れます
+                            host = "192.168.2.11" #お使いのサーバーのホスト名を入れます
                             port = 5000 #クライアントと同じPORTをしてあげます
-                            serversock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                            serversock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                            serversock.bind((host,port)) #IPとPORTを指定してバインドします
-                            serversock.listen(10) #接続の待ち受けをします（キューの最大数を指定）
-                            print 'Waiting for connections...'
-                            clientsock, client_address = serversock.accept() #接続されればデータを格納
-                            while True:
-                                rcvmsg = clientsock.recv(1024)
-                                print 'Received -> %s' % (rcvmsg)
-                                if rcvmsg == '':
-                                    break
-                                s_msg = 1
-                                print 'Wait...'
+                            
+                            client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-                                clientsock.sendall(s_msg) #メッセージを送ります
-                                clientsock.close()
+                            client.connect((host, port))
+
+                            client.send("from mac")
+
+                            response = client.recv(4096)
+
+                            print response
 
             buff.close()
             buff = StringIO(u(''))
