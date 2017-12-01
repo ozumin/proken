@@ -54,9 +54,14 @@ try:
                         if u('寂しい') in word:
                             print(word)
                             servo.ChangeDutyCycle(2.5)
-                        elif u('起きて') in word:
-                            print(word)
-                            servo.ChangeDutyCycle(4.075)
+                            time.sleep(0.5)
+                            servo.ChangeDutyCycle(8.4375)
+                            time.sleep(0.5)
+                            servo.ChangeDutyCycle(2.5)
+                            time.sleep(0.5)
+                        #elif u('起きて') in word:
+                        #    print(word)
+                        #    servo.ChangeDutyCycle(4.075)
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
