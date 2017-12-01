@@ -2,7 +2,7 @@
 
 import socket
 
-host = "192.168.2.13" #お使いのサーバーのホスト名を入れます
+host = "192.168.2.11" #お使いのサーバーのホスト名を入れます
 port = 5000 #適当なPORTを指定してあげます
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #オブジェクトの作成をします
