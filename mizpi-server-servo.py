@@ -1,6 +1,24 @@
 #coding: utf-8
 
 import socket
+import RPi.GPIO as GPIO
+import time
+import sys
+
+PIN = 18
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(PIN, GPIO.OUT)
+servo = GPIO.PWM(PIN, 50)
+servo.start(0.0)
+
+try:
+    unicode
+    def u(str): return str.decode('utf-8')
+    pass
+except:
+    def u(str): return str
+    pass
 
 host = "192.168.2.11" #お使いのサーバーのホスト名を入れます
 port = 5000 #クライアントと同じPORTをしてあげます
@@ -18,6 +36,19 @@ while True:
     print 'Received -> %s' % (rcvmsg)
     if rcvmsg == '':
         break
+    
+    servo.ChangeDutyCycle(2.5)
+    time.sleep(0.5)
+    servo.ChangeDutyCycle(8.4375)
+    time.sleep(0.5)
+    servo.ChangeDutyCycle(2.5)
+    time.sleep(0.5)
+
     print 'Wait...'
+
+servo.ChangeDutyCycle(7.25)
+time.sleep(1.5)
+servo.stop
+GPIO.cleanup()
 
 clientsock.close()
