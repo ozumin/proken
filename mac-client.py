@@ -37,7 +37,7 @@ try:
 
                         if u('起きて') in word:
                             print(word)
-                            sock.close()
+#                            sock.close()
                         
                             host = "192.168.2.11" #お使いのサーバーのホスト名を入れます
                             port = 5000 #クライアントと同じPORTをしてあげます
