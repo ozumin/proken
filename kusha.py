@@ -31,14 +31,14 @@ def set_servo_pulse(channel, pulse):
 pwm.set_pwm_freq(60)
 #pwm.set_pwm_freq(50)
 
-print('Moving servo on channel 0 and 1, press Ctrl-C to quit...')
-while True:
-    # Move servo on channel 0 and 1 between extremes
+for i in range(3):
     pwm.set_pwm(0,0,servo_min)
-    time.sleep(1)
     pwm.set_pwm(0,0,servo_max)
-    time.sleep(1)
     pwm.set_pwm(1,0,servo_min)
-    time.sleep(1)
     pwm.set_pwm(1,0,servo_max)
     time.sleep(1)
+    
+pwm.set_pwm(0,0,375)
+time.sleep(1)
+pwm.set_pwm(1,0,375)
+time.sleep(1)
