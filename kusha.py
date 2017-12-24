@@ -39,7 +39,6 @@ for i in range(3):
     pwm.set_pwm(1,0,servo_max)
     time.sleep(1)
     
-pwm.set_pwm(0,0,375)
-time.sleep(1)
-pwm.set_pwm(1,0,375)
+pwm.set_pwm(0,0,servo_min)
+pwm.set_pwm(1,0,servo_min)
 time.sleep(1)
