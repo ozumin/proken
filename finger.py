@@ -20,9 +20,13 @@ GPIO.setmode(GPIO.BCM)
 
 gp_out = 21
 
-GPIO.setup(gp_out, 50)
+GPIO.setup(gp_out, GPIO.OUT)
 
-servo.star(0.0)
+servo=GPIO.PWM(gp_out, 50)
+
+servo.start(0.0)
+
+time.sleep(2)
 
 servo.ChangeDutyCycle(7.25)
 time.sleep(0.5)
