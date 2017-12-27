@@ -176,6 +176,10 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'imagemap':
         pass
+    elif text == '起きて':
+        subprocess.check_call(['python','tataku.py'])
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text='起こしました'))
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
