@@ -9,31 +9,6 @@ import time
 import sys
 import Adafruit_PCA9685
 
-def naderu():
-    pwm.set_pwm(5,0,400)
-    time.sleep(1)
-    for i in range(3):
-        pwm.set_pwm(0,0,servo_min)
-        pwm.set_pwm(1,0,servo_min)
-        pwm.set_pwm(2,0,servo_min)
-        pwm.set_pwm(3,0,servo_min)
-        pwm.set_pwm(4,0,servo_min)
-        time.sleep(0.75)
-        pwm.set_pwm(0,0,servo_max)
-        pwm.set_pwm(1,0,servo_max)
-        pwm.set_pwm(2,0,servo_max)
-        pwm.set_pwm(3,0,servo_max)
-        pwm.set_pwm(4,0,servo_max)
-        time.sleep(0.75)
-    pwm.set_pwm(0,0,servo_max)
-    pwm.set_pwm(1,0,servo_max)
-    pwm.set_pwm(2,0,servo_max)
-    pwm.set_pwm(3,0,servo_max)
-    pwm.set_pwm(4,0,servo_max)
-    pwm.set_pwm(5,0,300)
-    time.sleep(1)
-    sock.close()
-
 pwm = Adafruit_PCA9685.PCA9685()
 
 servo_min = 150
@@ -88,10 +63,31 @@ try:
 
                         if u('寂しい') in word:
                             print(word)
-                            naderu()
-                        #elif u('起きて') in word:
-                        #    print(word)
-                        #    servo.ChangeDutyCycle(4.075)
+                            pwm.set_pwm(5,0,400)
+                            time.sleep(1)
+                            for i in range(3):
+                                pwm.set_pwm(0,0,servo_min)
+                                pwm.set_pwm(1,0,servo_min)
+                                pwm.set_pwm(2,0,servo_min)
+                                pwm.set_pwm(3,0,servo_min)
+                                pwm.set_pwm(4,0,servo_min)
+                                time.sleep(0.75)
+                                pwm.set_pwm(0,0,servo_max)
+                                pwm.set_pwm(1,0,servo_max)
+                                pwm.set_pwm(2,0,servo_max)
+                                pwm.set_pwm(3,0,servo_max)
+                                pwm.set_pwm(4,0,servo_max)
+                                time.sleep(0.75)
+                                pwm.set_pwm(0,0,servo_max)
+                                pwm.set_pwm(1,0,servo_max)
+                                pwm.set_pwm(2,0,servo_max)
+                                pwm.set_pwm(3,0,servo_max)
+                                pwm.set_pwm(4,0,servo_max)
+                                pwm.set_pwm(5,0,300)
+                                time.sleep(1)
+                        elif u('ありがとう') in word:
+                            print(word)
+                            sock.close()
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
@@ -101,3 +97,5 @@ except socket.error:
     print('socket error')
 except KeyboardInterrupt:
     pass
+
+#sock.close()
