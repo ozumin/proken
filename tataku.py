@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 import socket
-from io import SttringIO
+from io import StringIO
 import re
 import subprocess
 import RPi.GPIO as GPIO
