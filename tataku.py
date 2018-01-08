@@ -43,11 +43,11 @@ bufsize = 1024
 buff = StringIO(u(''))
 pattern = r'WHYPO WORD=\"(.*)\" CLASSID'
 
-while True:
-    pwm.set_pwm(5, 0, 300)
-    time.sleep(1)
-    pwm.set_pwm(5, 0, 450)
-    time.sleep(1)
+#while True:
+#    pwm.set_pwm(5, 0, 300)
+#    time.sleep(1)
+#    pwm.set_pwm(5, 0, 450)
+#    time.sleep(1)
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((host,port))
@@ -70,12 +70,11 @@ while True:
                 buff = StringIO(u(''))
                 if lines[len(lines)-1] != '.':
                     buff.write(lines[len(lines)-1])
-    break
 
-except socket.error:
-    print('socket error')
-except KeyboardInterrupt:
-    pass
+    except socket.error:
+        print('socket error')
+    except KeyboardInterrupt:
+        pass
 
 sock.close()
 
