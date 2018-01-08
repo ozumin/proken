@@ -53,14 +53,7 @@ try:
                     m = re.search(pattern, lines[i])
                     if m:
                         word = m.group(1)
-                        # 認識された単語wordの中に、u('...') という文字列が含まれるかどうかを
-                        # チェックし、文字列に応じたアクションを記述します。
-                        # u('...')でくくるのは、python2とpython3の互換性を保つためです。
-                        # 「対象となる文字が含まれているか」を調べていますので、
-                        # 先に「『１』が含まれるか」をチェックすると
-                        # １０～１２がすべて「１」と判定されてしまいます。
-                        # そのため、１０～１２のチェックを先に行っています。
-
+                        
                         if u('寂しい') in word:
                             print(word)
                             pwm.set_pwm(5,0,400)
@@ -83,7 +76,7 @@ try:
                             pwm.set_pwm(2,0,servo_max)
                             pwm.set_pwm(3,0,servo_max)
                             pwm.set_pwm(4,0,servo_max)
-                            pwm.set_pwm(5,0,300)
+                            pwm.set_pwm(5,0,200)
                             time.sleep(1)
                         elif u('ありがとう') in word:
                             print(word)
