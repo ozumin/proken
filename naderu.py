@@ -87,7 +87,7 @@ try:
                             time.sleep(1)
                         elif u('ありがとう') in word:
                             print(word)
-                            sock.close()
+#                            sock.close()
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
@@ -98,4 +98,4 @@ except socket.error:
 except KeyboardInterrupt:
     pass
 
-#sock.close()
+sock.close()
