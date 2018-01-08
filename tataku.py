@@ -59,13 +59,13 @@ try:
             lines = data.splitlines()
             for i in range(len(lines)-1):
                 if lines[i] != '.':
-                m = re.search(pattern, lines[i])
-                if m:
-                    word = m.group(1)
+                    m = re.search(pattern, lines[i])
+                    if m:
+                        word = m.group(1)
 
-                    if u('起きた') in word:
-                        print(word)
-                        break
+                        if u('起きた') in word:
+                            print(word)
+                            break
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
