@@ -59,7 +59,7 @@ while True:
                 lines = data.splitlines()
                 for i in range(len(lines)-1):
                     if lines[i] != '.':
-                    m = re.search(pattern, lines[i])\
+                    m = re.search(pattern, lines[i])
                     if m:
                         word = m.group(1)
 
