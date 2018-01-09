@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 import time
 import sys
 import Adafruit_PCA9685
+import random
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -23,6 +24,39 @@ def set_servo_pulse(channel, pulse):
     pwm.set_pwm(channel, 0, pulse)
 
 pwm.set_pwm_freq(60)
+
+def janken(num):
+    time.sleep(0.7)
+    pwm.set_pwm(5,0,300)
+    time.sleep(0.7)
+    pwm.set_pwm(5,0,200)
+    time.sleep(0.7)
+    pwm.set_pwm(5,0,300)
+    if num == 1:
+        time.sleep(1)
+    elif num == 2:
+        pwm.set_pwm(0,0,servo_min)
+        pwm.set_pwm(1,0,servo_min)
+        pwm.set_pwm(4,0,servo_min)
+        time.sleep(2)
+        pwm.set_pwm(0,0,servo_max)
+        pwm.set_pwm(1,0,servo_max)
+        pwm.set_pwm(4,0,servo_max)
+    else:
+        pwm.set_pwm(0,0,servo_min)
+        pwm.set_pwm(1,0,servo_min)
+        pwm.set_pwm(2,0,servo_min)
+        pwm.set_pwm(3,0,servo_min)
+        pwm.set_pwm(4,0,servo_min)
+        time.sleep(2)
+        pwm.set_pwm(0,0,servo_max)
+        pwm.set_pwm(1,0,servo_max)
+        pwm.set_pwm(2,0,servo_max)
+        pwm.set_pwm(3,0,servo_max)
+        pwm.set_pwm(4,0,servo_max)
+    time.sleep(1)
+    pwm.set_pwm(5,0,200)
+    time.sleep(1)
 
 try:
     unicode # python2
@@ -80,7 +114,9 @@ try:
                             time.sleep(1)
                         elif u('ありがとう') in word:
                             print(word)
-#                            sock.close()
+                        elif u('じゃんけん') in word:
+                            print(word)
+                            janken(random.choice('123'))
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
