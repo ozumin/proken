@@ -37,7 +37,7 @@ except: #python3
     pass
 
 host = '127.0.0.1'
-port = 10000
+port = 10500
 bufsize = 1024
 
 buff = StringIO(u(''))
@@ -64,6 +64,7 @@ try:
                             time.sleep(1)
                             if u('起きた') in word:
                                 print(word)
+                                sock.close()
                                 break
             buff.close()
             buff = StringIO(u(''))
