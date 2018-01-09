@@ -62,7 +62,7 @@ try:
                             time.sleep(1)
                             pwm.set_pwm(5, 0, 450)
                             time.sleep(1)
-                            if u('起きた') in word:
+                            if u('ありがとう') in word:
                                 print(word)
                                 sock.close()
                                 break
