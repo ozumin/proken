@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 import time
 import sys
 import Adafruit_PCA9685
+from goto import goto, label
 
 # Uncomment to enable debug output.
 #import logging
@@ -62,10 +63,10 @@ try:
                             time.sleep(1)
                             pwm.set_pwm(5, 0, 450)
                             time.sleep(1)
+                            word = m.group(1)
                             if u('ありがとう') in word:
                                 print(word)
-                                sock.close()
-                                break
+                                goto .End
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
@@ -75,7 +76,7 @@ except socket.error:
     print('socket error')
 except KeyboardInterrupt:
     pass
-
+label .END
 sock.close()
 
 pwm.set_pwm(5,0,200)
