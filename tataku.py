@@ -8,7 +8,6 @@ import RPi.GPIO as GPIO
 import time
 import sys
 import Adafruit_PCA9685
-from goto import goto, label
 
 # Uncomment to enable debug output.
 #import logging
@@ -43,11 +42,11 @@ bufsize = 1024
 
 buff = StringIO(u(''))
 pattern = r'WHYPO WORD=\"(.*)\" CLASSID'
-
+i = 1
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((host,port))
-    while True:
+    while i==1:
         data = sock.recv(bufsize)
         buff.write(data.decode('utf-8'))
         data = buff.getvalue().replace('> ', '>\n ')
@@ -65,8 +64,9 @@ try:
                             time.sleep(1)
                             word = m.group(1)
                             if u('ありがとう') in word:
-                                print(word)
-                                goto .End
+                                i = 0
+                                break
+
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
@@ -76,7 +76,7 @@ except socket.error:
     print('socket error')
 except KeyboardInterrupt:
     pass
-label .END
+
 sock.close()
 
 pwm.set_pwm(5,0,200)
