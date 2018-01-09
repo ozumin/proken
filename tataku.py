@@ -37,7 +37,7 @@ except: #python3
     pass
 
 host = '127.0.0.1'
-port = 10500
+port = 10000
 bufsize = 1024
 
 buff = StringIO(u(''))
@@ -57,7 +57,6 @@ try:
                     m = re.search(pattern, lines[i])
                     if m:
                         word = m.group(1)
-
                         while True:
                             pwm.set_pwm(5, 0, 300)
                             time.sleep(1)
