@@ -9,7 +9,6 @@ import time
 import sys
 import Adafruit_PCA9685
 import random
-import time
 
 pwm = Adafruit_PCA9685.PCA9685()
 
