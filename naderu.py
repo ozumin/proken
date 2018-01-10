@@ -117,7 +117,8 @@ try:
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
-                            subprocess.call('mplayer -ao alsa:device=plughw=0.0 2.mp3')
+                            cmd = 'mplayer -ao alsa:device=plughw=0.0 2.mp3'
+                            subprocess.call(cmd.strip()split(" ") )
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
