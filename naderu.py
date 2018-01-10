@@ -114,7 +114,7 @@ try:
                             print(word)
                         elif u('じゃんけん') in word:
                             print(word)
-                            janken(random.choice('123'))
+                            janken(random.randint(1,3))
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
