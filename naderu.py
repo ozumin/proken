@@ -54,7 +54,7 @@ def janken(num):
         pwm.set_pwm(2,0,servo_max)
         pwm.set_pwm(3,0,servo_max)
         pwm.set_pwm(4,0,servo_max)
-    time.sleep(1)
+    print(num)
     pwm.set_pwm(5,0,200)
     time.sleep(1)
 
