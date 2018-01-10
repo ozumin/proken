@@ -58,6 +58,7 @@ def janken(num):
     print(num)
     time.sleep(0.7)
     pwm.set_pwm(5,0,200)
+    time.sleep(1)
 
 try:
     unicode # python2
