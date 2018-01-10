@@ -37,7 +37,7 @@ def janken(num):
         pwm.set_pwm(0,0,servo_max)
         pwm.set_pwm(1,0,servo_max)
         pwm.set_pwm(4,0,servo_max)
-    else:
+    elif num == 3:
         pwm.set_pwm(0,0,servo_min)
         pwm.set_pwm(1,0,servo_min)
         pwm.set_pwm(2,0,servo_min)
@@ -49,6 +49,8 @@ def janken(num):
         pwm.set_pwm(2,0,servo_max)
         pwm.set_pwm(3,0,servo_max)
         pwm.set_pwm(4,0,servo_max)
+    else:
+        print('not found')
     print(num)
     time.sleep(1)
 
