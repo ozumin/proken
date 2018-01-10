@@ -25,6 +25,8 @@ def set_servo_pulse(channel, pulse):
 
 pwm.set_pwm_freq(60)
 
+num = 0
+
 def janken(num):
     time.sleep(1)
     if num == 1:
