@@ -28,10 +28,7 @@ pwm.set_pwm_freq(60)
 num = 0
 
 def janken(num):
-    time.sleep(1)
-    pwm.set_pwm(5,0,300)
     time.sleep(0.7)
-    pwm.set_pwm(5,0,200)
     if num == 1:
         time.sleep(0.7)
     elif num == 2:
