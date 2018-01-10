@@ -9,6 +9,7 @@ import time
 import sys
 import Adafruit_PCA9685
 import random
+import time
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -115,6 +116,9 @@ try:
                         elif u('じゃんけん') in word:
                             print(word)
                             janken(random.randint(1,3))
+                        elif u('つまらない') in word:
+                            print(word)
+                            subprocess.call('mplayer -ao alsa:device=plughw=0.0 2.mp3')
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
