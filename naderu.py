@@ -32,8 +32,9 @@ def janken(num):
     pwm.set_pwm(5,0,200)
     time.sleep(0.7)
     pwm.set_pwm(5,0,300)
+    time.sleep(0.7)
     if num == 1:
-        time.sleep(1)
+        time.sleep(0.7)
     elif num == 2:
         pwm.set_pwm(0,0,servo_min)
         pwm.set_pwm(1,0,servo_min)
@@ -55,8 +56,8 @@ def janken(num):
         pwm.set_pwm(3,0,servo_max)
         pwm.set_pwm(4,0,servo_max)
     print(num)
+    time.sleep(0.7)
     pwm.set_pwm(5,0,200)
-    time.sleep(1)
 
 try:
     unicode # python2
