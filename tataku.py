@@ -1,83 +1,49 @@
-# -*- coding: utf-8 -*-
+# Simple demo of of the PCA9685 PWM servo/LED controller library.
+# This will move channel 0 from min to max position repeatedly.
+# Author: Tony DiCola
+# License: Public Domain
 from __future__ import division
-import socket
-from io import StringIO
-import re
-import subprocess
-import RPi.GPIO as GPIO
 import time
-import sys
+
+# Import the PCA9685 module.
 import Adafruit_PCA9685
 
-# Uncomment to enable debug output.
-#import logging
-#logging.basicConfig(level=logging.DEBUG)
 
+# Uncomment to enable debug output.
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+# Initialise the PCA9685 using the default address (0x40).
 pwm = Adafruit_PCA9685.PCA9685()
 
+# Alternatively specify a different address and/or bus:
+#pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
+
+# Configure min and max servo pulse lengths
 servo_min = 150  # Min pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
 
+# Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000    # 1,000,000 us per second
     pulse_length //= 60       # 60 Hz
+    print('{0}us per period'.format(pulse_length))
     pulse_length //= 4096     # 12 bits of resolution
+    print('{0}us per bit'.format(pulse_length))
     pulse *= 1000
     pulse //= pulse_length
     pwm.set_pwm(channel, 0, pulse)
 
+# Set frequency to 60hz, good for servos.
 pwm.set_pwm_freq(60)
 
-try:
-    unicode # python2
-    def u(str): return str.decode('utf-8')
-    pass
-except: #python3
-    def u(str): return str
-    pass
-
-host = '127.0.0.1'
-port = 10500
-bufsize = 1024
-
-buff = StringIO(u(''))
-pattern = r'WHYPO WORD=\"(.*)\" CLASSID'
-j = 1
-try:
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect((host,port))
-    while j == 1:
-        data = sock.recv(bufsize)
-        buff.write(data.decode('utf-8'))
-        data = buff.getvalue().replace('> ', '>\n ')
-        if '\n' in data:
-            lines = data.splitlines()
-            for i in range(len(lines)-1):
-                if lines[i] != '.':
-                    m = re.search(pattern, lines[i])
-                    if m:
-                        word = m.group(1)
-                        while True:
-                            pwm.set_pwm(5, 0, 300)
-                            time.sleep(1)
-                            pwm.set_pwm(5, 0, 450)
-                            time.sleep(1)
-                            word = m.group(1)
-                            if u('ありがとう') in word:
-                                j = 0
-                                break
-
-            buff.close()
-            buff = StringIO(u(''))
-            if lines[len(lines)-1] != '.':
-                buff.write(lines[len(lines)-1])
-
-except socket.error:
-    print('socket error')
-except KeyboardInterrupt:
-    pass
-
-sock.close()
+print('Moving servo on channel 0, press Ctrl-C to quit...')
+for i in range(5):
+    # Move servo on channel O between extremes.
+    pwm.set_pwm(5, 0, 300)
+    time.sleep(0.7)
+    pwm.set_pwm(5, 0, 450)
+    time.sleep(0.7)
 
 pwm.set_pwm(5,0,200)
 time.sleep(1)
