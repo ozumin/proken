@@ -110,8 +110,6 @@ try:
                             pwm.set_pwm(4,0,servo_max)
                             pwm.set_pwm(5,0,200)
                             time.sleep(1)
-                        elif u('ありがとう') in word:
-                            print(word)
                         elif u('じゃんけん') in word:
                             print(word)
                             janken(random.randint(1,3))
@@ -119,6 +117,10 @@ try:
                             print(word)
                             cmd = 'mplayer -ao alsa:device=plughw=2.0 2.mp3'
                             subprocess.call(cmd.strip().split(" ") )
+                        elif u('ありがとう') in word:
+                            print(word)
+                            cmd = '^C'
+                            subprocess.call(cmd.strip().split(" "))
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
