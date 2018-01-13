@@ -10,7 +10,6 @@ import sys
 import Adafruit_PCA9685
 import random
 import pygame.mixer
-import jtalk
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -110,7 +109,7 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-                            jtalk.jtalk("じゃんけんぽん")
+                            subprocess.check_call(['python','jtalk.py'])
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
