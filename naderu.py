@@ -42,9 +42,9 @@ def jtalk(t):
     aplay = ['aplay','-q','test.wav','-D plughw:2,0']
     wr = subprocess.Popen(aplay)
 
-def main():
-    text = 'じゃん、けん、ぽん'
-    jtalk(text)
+#def main():
+#    text = 'じゃん、けん、ぽん'
+#    jtalk(text)
 
 def janken(num):
     time.sleep(0.7)
@@ -126,8 +126,7 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-                            if __name__=='__main__':
-                                main()
+                            jtalk('じゃん、けん、ぽん')
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
