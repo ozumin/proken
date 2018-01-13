@@ -126,7 +126,7 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-                            jtalk('じゃん、けん、ぽん')
+                            jtalk('じゃんけんぽん')
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
