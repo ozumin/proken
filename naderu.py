@@ -111,8 +111,6 @@ try:
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
-#                            cmd = 'mplayer -ao alsa:device=plughw=2.0 2.mp3'
-#                            subprocess.call(cmd.strip().split(" ") )
                             pygame.mixer.init()
                             pygame.mixer.music.load("2.mp3")
                             pygame.mixer.music.play(1)
