@@ -126,7 +126,7 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-                            if__name__=='__main__'
+                            if __name__=='__main__':
                                 main()
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
