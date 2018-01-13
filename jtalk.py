@@ -19,5 +19,5 @@ def main():
     text = 'じゃん、けん、ぽん'
     jtalk(text)
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     main()
