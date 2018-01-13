@@ -117,6 +117,7 @@ try:
                             pygame.mixer.init()
                             pygame.mixer.music.load("2.mp3")
                             pygame.mixer.music.play(1)
+                            pygame.mixer.init()
                         elif u('ありがとう') in word:
                             print(word)
                             pygame.mixer.music.stop()
