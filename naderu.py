@@ -119,8 +119,6 @@ try:
                             subprocess.call(cmd.strip().split(" ") )
                         elif u('ありがとう') in word:
                             print(word)
-                            cmd = '^C'
-                            subprocess.call(cmd.strip().split(" "))
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
