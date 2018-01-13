@@ -16,6 +16,16 @@ pwm = Adafruit_PCA9685.PCA9685()
 servo_min = 150
 servo_max = 600
 
+def main():
+    pygame.mixer.init(frequency=44100)
+    pygame.mixer.music.load("janken.wav")
+    pygame.mixer.music.play(1)
+    time.sleep(1)
+    pygame.mixer.music.stop()
+
+if __name__=='__main__':
+    main()
+
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000
     pulse_length //=60
@@ -111,11 +121,7 @@ try:
                             print(word)
 #                            cmd = 'aplay -D plughw:2,0 janken.wav'
 #                            subprocess.call(cmd.strip().split(" ") )
-                            pygame.mixer.init(frequency=44100)
-                            pygame.mixer.music.load("janken.wav")
-                            pygame.mixer.music.play(1)
-                            time.sleep(1)
-                            pygame.mixer.music.stop()
+                            main()
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
