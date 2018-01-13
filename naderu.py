@@ -20,11 +20,11 @@ def main():
     pygame.mixer.init(frequency=44100)
     pygame.mixer.music.load("janken.wav")
     pygame.mixer.music.play(1)
-    time.sleep(1)
+    time.sleep(3)
     pygame.mixer.music.stop()
 
-if __name__=='__main__':
-    main()
+#if __name__=='__main__':
+#    main()
 
 def set_servo_pulse(channel, pulse):
     pulse_length = 1000000
@@ -119,13 +119,12 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-#                            cmd = 'aplay -D plughw:2,0 janken.wav'
-#                            subprocess.call(cmd.strip().split(" ") )
-                            main()
+                            if __name__=='__main__':
+                                main()
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
-                            pygame.mixer.init()
+                            pygame.mixer.init(frequency=44100)
                             pygame.mixer.music.load("2.mp3")
                             pygame.mixer.music.play(1)
                         elif u('ありがとう') in word:
