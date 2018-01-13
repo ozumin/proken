@@ -109,7 +109,8 @@ try:
                             time.sleep(1)
                         elif u('じゃんけん') in word:
                             print(word)
-                            subprocess.check_call(['python','jtalk.py'])
+                            cmd = 'aplay -D plughw:2,0 janken.wav'
+                            subprocess.call(cmd.strip().split(" ") )
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
