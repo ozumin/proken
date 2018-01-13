@@ -114,6 +114,7 @@ try:
                             pygame.mixer.init(frequency=44100)
                             pygame.mixer.music.load("janken.wav")
                             pygame.mixer.music.play(1)
+                            time.sleep(1)
                             pygame.mixer.music.stop()
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
