@@ -103,11 +103,6 @@ try:
                                 pwm.set_pwm(3,0,servo_max)
                                 pwm.set_pwm(4,0,servo_max)
                                 time.sleep(0.75)
-                            pwm.set_pwm(0,0,servo_max)
-                            pwm.set_pwm(1,0,servo_max)
-                            pwm.set_pwm(2,0,servo_max)
-                            pwm.set_pwm(3,0,servo_max)
-                            pwm.set_pwm(4,0,servo_max)
                             pwm.set_pwm(5,0,200)
                             time.sleep(1)
                         elif u('じゃんけん') in word:
@@ -119,6 +114,13 @@ try:
                             subprocess.call(cmd.strip().split(" ") )
                         elif u('ありがとう') in word:
                             print(word)
+                            pwm.set_pwm(0,0,servo_max)
+                            pwm.set_pwm(1,0,servo_max)
+                            pwm.set_pwm(2,0,servo_max)
+                            pwm.set_pwm(3,0,servo_max)
+                            pwm.set_pwm(4,0,servo_max)
+                            pwm.set_pwm(5,0,200)
+                            time.sleep(1)
             buff.close()
             buff = StringIO(u(''))
             if lines[len(lines)-1] != '.':
