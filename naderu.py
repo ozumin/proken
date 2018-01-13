@@ -9,6 +9,7 @@ import time
 import sys
 import Adafruit_PCA9685
 import random
+import pygame.mixer
 
 pwm = Adafruit_PCA9685.PCA9685()
 
@@ -110,10 +111,14 @@ try:
                             janken(random.randint(1,3))
                         elif u('つまらない') in word:
                             print(word)
-                            cmd = 'mplayer -ao alsa:device=plughw=2.0 2.mp3'
-                            subprocess.call(cmd.strip().split(" ") )
+#                            cmd = 'mplayer -ao alsa:device=plughw=2.0 2.mp3'
+#                            subprocess.call(cmd.strip().split(" ") )
+                            pygame.mixer.init()
+                            pygame.mixer.music.load("2.mp3")
+                            pygame.mixer.music.play(1)
                         elif u('ありがとう') in word:
                             print(word)
+                            pygame.mixer.music.stop()
                             pwm.set_pwm(0,0,servo_max)
                             pwm.set_pwm(1,0,servo_max)
                             pwm.set_pwm(2,0,servo_max)
